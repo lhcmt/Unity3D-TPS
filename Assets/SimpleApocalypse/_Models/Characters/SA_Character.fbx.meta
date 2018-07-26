@@ -1,0 +1,781 @@
+fileFormatVersion: 2
+guid: dbbc53a6bc8f5c64bb234194ce1380aa
+timeCreated: 1462057556
+licenseType: Store
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Body_jnt
+    100002: Foot_Left_jnt
+    100004: Foot_Right_jnt
+    100006: Hand_Left_jnt
+    100008: Hand_Right_jnt
+    100010: Hat_jnt
+    100012: Head_jnt
+    100014: Hips_jnt
+    100016: LowerArm_Left_jnt
+    100018: LowerArm_Right_jnt
+    100020: LowerLeg_Left_jnt
+    100022: LowerLeg_Right_jnt
+    100024: Root_jnt
+    100026: SA_Char_Survivor_Biohazard
+    100028: SA_Char_Survivor_Businessman
+    100030: SA_Char_Survivor_Doctor
+    100032: SA_Char_Survivor_Farmer
+    100034: SA_Char_Survivor_FemaleHero
+    100036: SA_Char_Survivor_FemalePyro
+    100038: SA_Char_Survivor_FemaleSoldier
+    100040: SA_Char_Survivor_FemaleTrenchcoat
+    100042: SA_Char_Survivor_Hazard
+    100044: SA_Char_Survivor_HoodedMan
+    100046: SA_Char_Survivor_InjuredMan
+    100048: SA_Char_Survivor_Male_01
+    100050: SA_Char_Survivor_Male_02
+    100052: SA_Char_Survivor_Male_03
+    100054: SA_Char_Survivor_Male_04
+    100056: SA_Char_Survivor_MaleTrenchcoat
+    100058: SA_Char_Survivor_OldMan
+    100060: SA_Char_Survivor_Prisoner
+    100062: SA_Char_Survivor_RoadWorker
+    100064: SA_Char_Survivor_Scout
+    100066: SA_Char_Survivor_Sheriff
+    100068: //RootNode
+    100070: SA_Zombie_AirportSecurity
+    100072: SA_Zombie_AirportWorker
+    100074: SA_Zombie_Bellhop
+    100076: SA_Zombie_Businessman
+    100078: SA_Zombie_Cheerleader
+    100080: SA_Zombie_Clown
+    100082: SA_Zombie_Farmer
+    100084: SA_Zombie_FarmersDaughter
+    100086: SA_Zombie_Firefighter
+    100088: SA_Zombie_FootballPlayer
+    100090: SA_Zombie_Grandma
+    100092: SA_Zombie_Hobo
+    100094: SA_Zombie_Industrial
+    100096: SA_Zombie_Mechanic
+    100098: SA_Zombie_Mountie
+    100100: SA_Zombie_Pilot
+    100102: SA_Zombie_Pimp
+    100104: SA_Zombie_Prisoner
+    100106: SA_Zombie_Prostitute
+    100108: SA_Zombie_Roadworker
+    100110: SA_Zombie_Robber
+    100112: SA_Zombie_Runner
+    100114: SA_Zombie_Santa
+    100116: SA_Zombie_Shopkeeper
+    100118: SA_Zombie_Soldier
+    100120: SA_Zombie_Streetman
+    100122: SA_Zombie_Tourist
+    100124: SA_Zombie_Trucker
+    100126: Spine_jnt
+    100128: UpperArm_Left_jnt
+    100130: UpperArm_Right_jnt
+    100132: UpperLeg_Left_jnt
+    100134: UpperLeg_Right_jnt
+    100136: SA_Char_Survivor_MaleHunter
+    400000: Body_jnt
+    400002: Foot_Left_jnt
+    400004: Foot_Right_jnt
+    400006: Hand_Left_jnt
+    400008: Hand_Right_jnt
+    400010: Hat_jnt
+    400012: Head_jnt
+    400014: Hips_jnt
+    400016: LowerArm_Left_jnt
+    400018: LowerArm_Right_jnt
+    400020: LowerLeg_Left_jnt
+    400022: LowerLeg_Right_jnt
+    400024: Root_jnt
+    400026: SA_Char_Survivor_Biohazard
+    400028: SA_Char_Survivor_Businessman
+    400030: SA_Char_Survivor_Doctor
+    400032: SA_Char_Survivor_Farmer
+    400034: SA_Char_Survivor_FemaleHero
+    400036: SA_Char_Survivor_FemalePyro
+    400038: SA_Char_Survivor_FemaleSoldier
+    400040: SA_Char_Survivor_FemaleTrenchcoat
+    400042: SA_Char_Survivor_Hazard
+    400044: SA_Char_Survivor_HoodedMan
+    400046: SA_Char_Survivor_InjuredMan
+    400048: SA_Char_Survivor_Male_01
+    400050: SA_Char_Survivor_Male_02
+    400052: SA_Char_Survivor_Male_03
+    400054: SA_Char_Survivor_Male_04
+    400056: SA_Char_Survivor_MaleTrenchcoat
+    400058: SA_Char_Survivor_OldMan
+    400060: SA_Char_Survivor_Prisoner
+    400062: SA_Char_Survivor_RoadWorker
+    400064: SA_Char_Survivor_Scout
+    400066: SA_Char_Survivor_Sheriff
+    400068: //RootNode
+    400070: SA_Zombie_AirportSecurity
+    400072: SA_Zombie_AirportWorker
+    400074: SA_Zombie_Bellhop
+    400076: SA_Zombie_Businessman
+    400078: SA_Zombie_Cheerleader
+    400080: SA_Zombie_Clown
+    400082: SA_Zombie_Farmer
+    400084: SA_Zombie_FarmersDaughter
+    400086: SA_Zombie_Firefighter
+    400088: SA_Zombie_FootballPlayer
+    400090: SA_Zombie_Grandma
+    400092: SA_Zombie_Hobo
+    400094: SA_Zombie_Industrial
+    400096: SA_Zombie_Mechanic
+    400098: SA_Zombie_Mountie
+    400100: SA_Zombie_Pilot
+    400102: SA_Zombie_Pimp
+    400104: SA_Zombie_Prisoner
+    400106: SA_Zombie_Prostitute
+    400108: SA_Zombie_Roadworker
+    400110: SA_Zombie_Robber
+    400112: SA_Zombie_Runner
+    400114: SA_Zombie_Santa
+    400116: SA_Zombie_Shopkeeper
+    400118: SA_Zombie_Soldier
+    400120: SA_Zombie_Streetman
+    400122: SA_Zombie_Tourist
+    400124: SA_Zombie_Trucker
+    400126: Spine_jnt
+    400128: UpperArm_Left_jnt
+    400130: UpperArm_Right_jnt
+    400132: UpperLeg_Left_jnt
+    400134: UpperLeg_Right_jnt
+    400136: SA_Char_Survivor_MaleHunter
+    4300000: SA_Zombie_AirportSecurity
+    4300002: SA_Zombie_AirportWorker
+    4300004: SA_Zombie_Bellhop
+    4300006: SA_Zombie_Businessman
+    4300008: SA_Zombie_Cheerleader
+    4300010: SA_Zombie_Clown
+    4300012: SA_Zombie_Farmer
+    4300014: SA_Zombie_FarmersDaughter
+    4300016: SA_Zombie_Firefighter
+    4300018: SA_Zombie_FootballPlayer
+    4300020: SA_Zombie_Grandma
+    4300022: SA_Zombie_Hobo
+    4300024: SA_Zombie_Industrial
+    4300026: SA_Zombie_Mechanic
+    4300028: SA_Zombie_Mountie
+    4300030: SA_Zombie_Pilot
+    4300032: SA_Zombie_Pimp
+    4300034: SA_Zombie_Prisoner
+    4300036: SA_Zombie_Prostitute
+    4300038: SA_Zombie_Roadworker
+    4300040: SA_Zombie_Robber
+    4300042: SA_Zombie_Runner
+    4300044: SA_Zombie_Santa
+    4300046: SA_Zombie_Shopkeeper
+    4300048: SA_Zombie_Soldier
+    4300050: SA_Zombie_Streetman
+    4300052: SA_Zombie_Tourist
+    4300054: SA_Zombie_Trucker
+    4300056: SA_Char_Survivor_Biohazard
+    4300058: SA_Char_Survivor_Businessman
+    4300060: SA_Char_Survivor_Doctor
+    4300062: SA_Char_Survivor_Farmer
+    4300064: SA_Char_Survivor_FemaleHero
+    4300066: SA_Char_Survivor_FemalePyro
+    4300068: SA_Char_Survivor_FemaleSoldier
+    4300070: SA_Char_Survivor_FemaleTrenchcoat
+    4300072: SA_Char_Survivor_Hazard
+    4300074: SA_Char_Survivor_InjuredMan
+    4300076: SA_Char_Survivor_Male_01
+    4300078: SA_Char_Survivor_Male_02
+    4300080: SA_Char_Survivor_Male_03
+    4300082: SA_Char_Survivor_Male_04
+    4300084: SA_Char_Survivor_HoodedMan
+    4300086: SA_Char_Survivor_MaleTrenchcoat
+    4300088: SA_Char_Survivor_OldMan
+    4300090: SA_Char_Survivor_Prisoner
+    4300092: SA_Char_Survivor_RoadWorker
+    4300094: SA_Char_Survivor_Scout
+    4300096: SA_Char_Survivor_Sheriff
+    4300098: SA_Char_Survivor_MaleHunter
+    9500000: //RootNode
+    13700000: SA_Char_Survivor_Biohazard
+    13700002: SA_Char_Survivor_Businessman
+    13700004: SA_Char_Survivor_Doctor
+    13700006: SA_Char_Survivor_Farmer
+    13700008: SA_Char_Survivor_FemaleHero
+    13700010: SA_Char_Survivor_FemalePyro
+    13700012: SA_Char_Survivor_FemaleSoldier
+    13700014: SA_Char_Survivor_FemaleTrenchcoat
+    13700016: SA_Char_Survivor_Hazard
+    13700018: SA_Char_Survivor_HoodedMan
+    13700020: SA_Char_Survivor_InjuredMan
+    13700022: SA_Char_Survivor_Male_01
+    13700024: SA_Char_Survivor_Male_02
+    13700026: SA_Char_Survivor_Male_03
+    13700028: SA_Char_Survivor_Male_04
+    13700030: SA_Char_Survivor_MaleTrenchcoat
+    13700032: SA_Char_Survivor_OldMan
+    13700034: SA_Char_Survivor_Prisoner
+    13700036: SA_Char_Survivor_RoadWorker
+    13700038: SA_Char_Survivor_Scout
+    13700040: SA_Char_Survivor_Sheriff
+    13700042: SA_Zombie_AirportSecurity
+    13700044: SA_Zombie_AirportWorker
+    13700046: SA_Zombie_Bellhop
+    13700048: SA_Zombie_Businessman
+    13700050: SA_Zombie_Cheerleader
+    13700052: SA_Zombie_Clown
+    13700054: SA_Zombie_Farmer
+    13700056: SA_Zombie_FarmersDaughter
+    13700058: SA_Zombie_Firefighter
+    13700060: SA_Zombie_FootballPlayer
+    13700062: SA_Zombie_Grandma
+    13700064: SA_Zombie_Hobo
+    13700066: SA_Zombie_Industrial
+    13700068: SA_Zombie_Mechanic
+    13700070: SA_Zombie_Mountie
+    13700072: SA_Zombie_Pilot
+    13700074: SA_Zombie_Pimp
+    13700076: SA_Zombie_Prisoner
+    13700078: SA_Zombie_Prostitute
+    13700080: SA_Zombie_Roadworker
+    13700082: SA_Zombie_Robber
+    13700084: SA_Zombie_Runner
+    13700086: SA_Zombie_Santa
+    13700088: SA_Zombie_Shopkeeper
+    13700090: SA_Zombie_Soldier
+    13700092: SA_Zombie_Streetman
+    13700094: SA_Zombie_Tourist
+    13700096: SA_Zombie_Trucker
+    13700098: SA_Char_Survivor_MaleHunter
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.01
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human:
+    - boneName: Hips_jnt
+      humanName: Hips
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: UpperLeg_Left_jnt
+      humanName: LeftUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: UpperLeg_Right_jnt
+      humanName: RightUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: LowerLeg_Left_jnt
+      humanName: LeftLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: LowerLeg_Right_jnt
+      humanName: RightLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Foot_Left_jnt
+      humanName: LeftFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Foot_Right_jnt
+      humanName: RightFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Body_jnt
+      humanName: Spine
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Head_jnt
+      humanName: Head
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: UpperArm_Left_jnt
+      humanName: LeftUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: UpperArm_Right_jnt
+      humanName: RightUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: LowerArm_Left_jnt
+      humanName: LeftLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: LowerArm_Right_jnt
+      humanName: RightLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Hand_Left_jnt
+      humanName: LeftHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Hand_Right_jnt
+      humanName: RightHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    skeleton:
+    - name: SA_Character(Clone)
+      parentName: 
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.01, y: 0.01, z: 0.01}
+    - name: SA_Char_Survivor_Biohazard
+      parentName: SA_Character(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: SA_Char_Survivor_Businessman
+      parentName: SA_Character(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: SA_Char_Survivor_Doctor
+      parentName: SA_Character(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: SA_Char_Survivor_Farmer
+      parentName: SA_Character(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: SA_Char_Survivor_FemaleHero
+      parentName: SA_Character(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: SA_Char_Survivor_FemalePyro
+      parentName: SA_Character(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: SA_Char_Survivor_FemaleSoldier
+      parentName: SA_Character(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: SA_Char_Survivor_FemaleTrenchcoat
+      parentName: SA_Character(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: SA_Char_Survivor_Hazard
+      parentName: SA_Character(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: SA_Char_Survivor_HoodedMan
+      parentName: SA_Character(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: SA_Char_Survivor_InjuredMan
+      parentName: SA_Character(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: SA_Char_Survivor_Male_01
+      parentName: SA_Character(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: SA_Char_Survivor_Male_02
+      parentName: SA_Character(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: SA_Char_Survivor_Male_03
+      parentName: SA_Character(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: SA_Char_Survivor_Male_04
+      parentName: SA_Character(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: SA_Char_Survivor_MaleHunter
+      parentName: SA_Character(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: SA_Char_Survivor_MaleTrenchcoat
+      parentName: SA_Character(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: SA_Char_Survivor_OldMan
+      parentName: SA_Character(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: SA_Char_Survivor_Prisoner
+      parentName: SA_Character(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: SA_Char_Survivor_RoadWorker
+      parentName: SA_Character(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: SA_Char_Survivor_Scout
+      parentName: SA_Character(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: SA_Char_Survivor_Sheriff
+      parentName: SA_Character(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: SA_Zombie_AirportSecurity
+      parentName: SA_Character(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: SA_Zombie_AirportWorker
+      parentName: SA_Character(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: SA_Zombie_Bellhop
+      parentName: SA_Character(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: SA_Zombie_Businessman
+      parentName: SA_Character(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: SA_Zombie_Cheerleader
+      parentName: SA_Character(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: SA_Zombie_Clown
+      parentName: SA_Character(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: SA_Zombie_Farmer
+      parentName: SA_Character(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: SA_Zombie_FarmersDaughter
+      parentName: SA_Character(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: SA_Zombie_Firefighter
+      parentName: SA_Character(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: SA_Zombie_FootballPlayer
+      parentName: SA_Character(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: SA_Zombie_Grandma
+      parentName: SA_Character(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: SA_Zombie_Hobo
+      parentName: SA_Character(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: SA_Zombie_Industrial
+      parentName: SA_Character(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: SA_Zombie_Mechanic
+      parentName: SA_Character(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: SA_Zombie_Mountie
+      parentName: SA_Character(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: SA_Zombie_Pilot
+      parentName: SA_Character(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: SA_Zombie_Pimp
+      parentName: SA_Character(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: SA_Zombie_Prisoner
+      parentName: SA_Character(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: SA_Zombie_Prostitute
+      parentName: SA_Character(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: SA_Zombie_Roadworker
+      parentName: SA_Character(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: SA_Zombie_Robber
+      parentName: SA_Character(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: SA_Zombie_Runner
+      parentName: SA_Character(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: SA_Zombie_Santa
+      parentName: SA_Character(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: SA_Zombie_Shopkeeper
+      parentName: SA_Character(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: SA_Zombie_Soldier
+      parentName: SA_Character(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: SA_Zombie_Streetman
+      parentName: SA_Character(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: SA_Zombie_Tourist
+      parentName: SA_Character(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: SA_Zombie_Trucker
+      parentName: SA_Character(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Root_jnt
+      parentName: SA_Character(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Hips_jnt
+      parentName: Root_jnt
+      position: {x: -0, y: 1.0449876, z: 0}
+      rotation: {x: 0, y: 0, z: 0.2597436, w: 0.9656776}
+      scale: {x: 1, y: 1, z: 1}
+    - name: UpperLeg_Left_jnt
+      parentName: Hips_jnt
+      position: {x: -0.25698245, y: -1.4210854e-16, z: 0}
+      rotation: {x: -0.00013711104, y: -0.00008424717, z: 0.49917465, w: 0.8665014}
+      scale: {x: 1, y: 1, z: 1}
+    - name: LowerLeg_Left_jnt
+      parentName: UpperLeg_Left_jnt
+      position: {x: -0.37452164, y: -7.105427e-17, z: -1.7347234e-20}
+      rotation: {x: -0.7075902, y: 0.000006446892, z: -0.000006145912, w: 0.706623}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Foot_Left_jnt
+      parentName: LowerLeg_Left_jnt
+      position: {x: -0.38874373, y: 1.20736755e-17, z: 7.342678e-12}
+      rotation: {x: 0.50042224, y: 0.5004222, z: -0.49957308, w: 0.49958178}
+      scale: {x: 1, y: 1, z: 1}
+    - name: UpperLeg_Right_jnt
+      parentName: Hips_jnt
+      position: {x: 0.12763838, y: -0.22304337, z: 0}
+      rotation: {x: -0.49918568, y: 0.8664699, z: 0.0057249772, w: -0.003284124}
+      scale: {x: 1, y: 1, z: 1}
+    - name: LowerLeg_Right_jnt
+      parentName: UpperLeg_Right_jnt
+      position: {x: 0.374522, y: 3.1974422e-16, z: -1.0987399e-12}
+      rotation: {x: -0.70410997, y: -0.000030960506, z: 0.00005181963, w: 0.71009094}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Foot_Right_jnt
+      parentName: LowerLeg_Right_jnt
+      position: {x: 0.388744, y: 8.197164e-12, z: -3.690733e-11}
+      rotation: {x: 0.50117123, y: 0.5011969, z: -0.498829, w: 0.49879736}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Body_jnt
+      parentName: Hips_jnt
+      position: {x: 0.009555898, y: 0.016478358, z: 0}
+      rotation: {x: 0, y: 0, z: 0.86650366, w: -0.49917072}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Spine_jnt
+      parentName: Body_jnt
+      position: {x: -0.6703252, y: 3.7986005e-16, z: 0}
+      rotation: {x: 0, y: -0, z: -1.6102571e-15, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Head_jnt
+      parentName: Spine_jnt
+      position: {x: -0.3106261, y: 6.897285e-17, z: 0}
+      rotation: {x: 0, y: -0, z: -1.6653345e-15, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Hat_jnt
+      parentName: Head_jnt
+      position: {x: -0.54227096, y: 1.2040834e-16, z: 0}
+      rotation: {x: 3.6511133e-16, y: -1.4823535e-16, z: 0.7071068, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: UpperArm_Right_jnt
+      parentName: Spine_jnt
+      position: {x: -0.21910845, y: 0.565232, z: 0}
+      rotation: {x: -0.7071068, y: 0.7071068, z: 4.3352284e-17, w: -4.3243328e-17}
+      scale: {x: 1, y: 1, z: 1}
+    - name: LowerArm_Right_jnt
+      parentName: UpperArm_Right_jnt
+      position: {x: -0.47118998, y: 5.684342e-16, z: -5.770413e-17}
+      rotation: {x: 0, y: 0, z: 8.3266727e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Hand_Right_jnt
+      parentName: LowerArm_Right_jnt
+      position: {x: -0.4403, y: -8.5265126e-16, z: -5.3921198e-17}
+      rotation: {x: 1.4083751e-13, y: 1, z: -1.1714554e-15, w: 1.8533623e-15}
+      scale: {x: 1, y: 1, z: 1}
+    - name: UpperArm_Left_jnt
+      parentName: Spine_jnt
+      position: {x: -0.21910845, y: -0.565232, z: 0}
+      rotation: {x: 0, y: -0, z: -0.7071068, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: LowerArm_Left_jnt
+      parentName: UpperArm_Left_jnt
+      position: {x: 0.471188, y: 0, z: 5.77041e-17}
+      rotation: {x: 0, y: -0, z: -2.3869795e-15, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Hand_Left_jnt
+      parentName: LowerArm_Left_jnt
+      position: {x: 0.4403, y: -5.684342e-16, z: 5.39209e-17}
+      rotation: {x: -1.7658669e-13, y: 1, z: -7.2736614e-16, w: -2.2836737e-15}
+      scale: {x: 1, y: 1, z: 1}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 3
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

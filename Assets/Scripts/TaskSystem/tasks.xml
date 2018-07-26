@@ -1,0 +1,15 @@
+<Root>
+ <Task1>
+   <taskName>找到警局</taskName>
+   <caption>飞机坠落在一个小镇的郊外，小镇似乎发生了什么可怕的事情</caption>
+   <conditionID>001</conditionID>
+   <conditionTargetAmount>1</conditionTargetAmount>
+  </Task1>
+  <Task2>
+  <taskName>保护自己</taskName>
+  <caption>击杀五个僵尸</caption>
+  <conditionID>201</conditionID>
+  <conditionTargetAmount>5</conditionTargetAmount>
+
+  </Task2>
+</Root>
