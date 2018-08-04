@@ -2,15 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ZombieAIState : MonoBehaviour {
+public class ZombieAIState  {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+    #region public methods
+
+    //虚函数
+    //AI行为
+    public virtual void AIbehavior()
+    {
+
+    }
+
+    #endregion
 }

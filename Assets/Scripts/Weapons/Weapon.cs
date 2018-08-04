@@ -228,7 +228,12 @@ public class Weapon : Photon.PunBehaviour {
         if (hit.collider.gameObject.tag == "Ragdoll")
         {
             ZombieStats ZombieHP = hit.collider.gameObject.GetComponentInParent<ZombieStats>();
-            ZombieHP.ApplyDamage(weaponSettings.damage);
+            //伤害判定本地计算
+            if (owner.gameObject.GetComponent<PhotonView>().isMine)
+            {
+                 ZombieHP.ApplyDamage(weaponSettings.damage);
+            }
+
             //hitsound
             
             //hit forece 有点问题

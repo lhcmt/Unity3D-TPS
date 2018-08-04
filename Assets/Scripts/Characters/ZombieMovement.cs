@@ -24,7 +24,7 @@ public class ZombieMovement : MonoBehaviour {
         public float margin = 0.1f;
     }
     [SerializeField]
-    public MovementSettings movement;
+    public MovementSettings movement; //移动速度参数
     [System.Serializable]
     public class PhysicsSettings
     {
@@ -48,11 +48,12 @@ public class ZombieMovement : MonoBehaviour {
     void Update()
     {
         ApplyGravity();
-        //这个比自己的好
+        //这个CharacterContoller中的变量，比自己的好
         isGrounded = characterContoller.isGrounded;
 
     }
-
+    //，zombie的动画片段自身不带移动，需要手动
+    //在使用animator同时需要调用characterContoller.Move()方法
     public void AnimateAndMove(float forward, float strafe)
     {
         animator.SetFloat(animations.verticalVelocityFloat, forward);
@@ -61,6 +62,7 @@ public class ZombieMovement : MonoBehaviour {
         direction *= movement.moveSpeed * Time.deltaTime;
         characterContoller.Move(direction);
     }
+
     public void JustAnimate(float forward, float strafe)
     {
         animator.SetFloat(animations.verticalVelocityFloat, forward);

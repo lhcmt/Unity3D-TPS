@@ -118,8 +118,10 @@
      <Compile Include="Assets\Scripts\CameraRig\CameraRig.cs" />
      <Compile Include="Assets\Scripts\Characters\CharacterMovement.cs" />
      <Compile Include="Assets\Scripts\Characters\CharacterStats.cs" />
+     <Compile Include="Assets\Scripts\Characters\States\ChasingState.cs" />
+     <Compile Include="Assets\Scripts\Characters\States\IdelState.cs" />
+     <Compile Include="Assets\Scripts\Characters\States\PatrolState.cs" />
      <Compile Include="Assets\Scripts\Characters\ZombieAI.cs" />
-     <Compile Include="Assets\Scripts\Characters\ZombieAINetwork.cs" />
      <Compile Include="Assets\Scripts\Characters\ZombieAIState.cs" />
      <Compile Include="Assets\Scripts\Characters\ZombieMovement.cs" />
      <Compile Include="Assets\Scripts\Characters\ZombieStats.cs" />

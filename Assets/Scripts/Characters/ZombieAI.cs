@@ -7,28 +7,25 @@ using UnityEngine.AI;
 
 [RequireComponent(typeof(ZombieMovement))]
 [RequireComponent(typeof(Animator))]
-public class ZombieAI : Photon.PunBehaviour {
-
-    private NavMeshAgent navMeshAgent;
-    //
-    private ZombieMovement zombieMove {
-        get { return GetComponent<ZombieMovement>(); }
-        set { zombieMove = value; }
-    }
-    private Animator animator { 
-        get { return GetComponent<Animator>();}
-        set { animator = value;} }
-    //自身状态
-    private ZombieStats zombieStats{
-        get { return GetComponent<ZombieStats>(); }
-        set { zombieStats = value; }
-    }
-
-	public enum AIState
+public class ZombieAI : Photon.PunBehaviour
+{
+    #region public variable
+    /*
+    public enum AIState
     {
-        Patrol,Chasing,Eatting,Idel,Screaming
+        Patrol,
+        Chasing,
+        Eatting,
+        Idel,
+        Screaming
     }
-    public AIState aiState;
+    public AIState aiState;*/
+    //静态保存几个状态
+    [HideInInspector]
+    public PatrolState partolState;
+    [HideInInspector]
+    public ChasingState chasingState;
+
 
     [System.Serializable]
     public class PatrolSettings
@@ -59,28 +56,51 @@ public class ZombieAI : Photon.PunBehaviour {
     }
     public AttackSettings attackSettings;
 
+    [HideInInspector]
+    public NavMeshAgent navMeshAgent;
+    [HideInInspector]
+    public ZombieAudio zombieAudio;
+    [HideInInspector]
+    public bool walkingToDest; //IK 已经忘了当时为什么要写这个了
+    [HideInInspector]
+    public float forward; //前进速度，在各个状态之间共享
+    [HideInInspector]
+    public Transform target;//追逐的player对象
 
-    private float currentWaitTime = 5f;
-    private int waypointIndex = 0;
-    private Transform currentlookTransform;
-    private bool walkingToDest; //IK
-    private bool attacked =false;
 
-    
-    private float forward;
+    #endregion
 
-    private Transform target;//player
-    private Vector3 targetLastKnownPosition;//丢失player后，最后位置
+    #region private variable
+    //
+    private ZombieMovement zombieMove
+    {
+        get { return GetComponent<ZombieMovement>(); }
+        set { zombieMove = value; }
+    }
+    private Animator animator
+    {
+        get { return GetComponent<Animator>(); }
+        set { animator = value; }
+    }
+    //自身状态
+    private ZombieStats zombieStats
+    {
+        get { return GetComponent<ZombieStats>(); }
+        set { zombieStats = value; }
+    }
+
+    private Transform currentlookTransform; //当前监视方向
+    private Vector3 targetLastKnownPosition;//丢失player后，player最后位置
     private CharacterStats[] allCharacters;
-    private Timer timer;
-    private ZombieAudio zombieAudio;
-    private bool screamed;
+    private ZombieAIState zombieState;//基类对象
+
+    #endregion
 
     void Start()
     {
-        navMeshAgent = GetComponentInChildren<NavMeshAgent>();
-        timer = GameObject.FindGameObjectWithTag("GameController").GetComponent<Timer>();
         zombieAudio = GetComponent<ZombieAudio>();
+        //初始化navMeshAgent
+        navMeshAgent = GetComponentInChildren<NavMeshAgent>();
         if (navMeshAgent == null)
         {
             Debug.LogError("We need a navmesh to traverse the world with");
@@ -91,16 +111,16 @@ public class ZombieAI : Photon.PunBehaviour {
             Debug.LogError("The navmesh agent should be a child of the character");
             enabled = false;
         }
-
         navMeshAgent.speed = 0;
         navMeshAgent.acceleration = 0;
         sight.sightLayers = LayerMask.GetMask("Rigdoll");
-
         if(navMeshAgent.stoppingDistance == 0)
         {
             //Debug.Log("Auto settings stoppoing distance to 0.3f");
             navMeshAgent.stoppingDistance = 1.5f;
         }
+        InitializeAIState();
+        //获取所有玩家对象
         GetAllCharacter();
     }
 
@@ -110,151 +130,23 @@ public class ZombieAI : Photon.PunBehaviour {
         //以后加个判断，zombie分区域管理，玩家进去某一区域后此区域僵尸才开始寻找目标
         GetAllCharacter();
         LookforTarget();
-
-        //简单状态机使用Switch实现，
-        switch(aiState)
+        //联机状态下
+        //只有主机执行场景中的zombieAI,其他客户端同步主机的ZombieAI 位置，动画
+        if (PhotonNetwork.connected && !PhotonNetwork.isMasterClient)
         {
-            case AIState.Patrol:
-                Patrol();
-                break;
-            case AIState.Chasing:
-                ChasingPlayer();
-                break;
-            case AIState.Idel:
-                Idel();
-                break;
-            case AIState.Screaming:
-                Screaming();
-                break;
+            return;
         }
+        zombieState.AIbehavior();
 
      }
-    //巡逻
-    void Patrol()
-    {
-        if (!navMeshAgent.isOnNavMesh)
-            return;
-        if (patrolSettings.waypoints.Length == 0)
-            return;
 
-        navMeshAgent.SetDestination(patrolSettings.waypoints[waypointIndex].destination.position);
-
-        LookAtPosition(navMeshAgent.steeringTarget);
-        zombieAudio.PlayZombieWalkSound();
-        //走到一个点，走向下一个点
-        if(navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance)
-        {
-            walkingToDest = false; 
-            forward = LerpSpeed(forward, 0, 15);//停下
-            currentWaitTime -= Time.deltaTime;//等待
-            if(patrolSettings.waypoints[waypointIndex].lookAtTarget != null)
-            {
-                currentlookTransform = patrolSettings.waypoints[waypointIndex].lookAtTarget;
-            }
-            if (currentWaitTime <= 0)
-            {
-                waypointIndex = (waypointIndex + 1) % patrolSettings.waypoints.Length;
-                currentWaitTime = patrolSettings.waypoints[waypointIndex].waitTime;
-            }
-
-        }
-        else//走向目标点
-        {
-            walkingToDest = true;
-            forward = LerpSpeed(forward, 0.5f, 15);
-            currentWaitTime = patrolSettings.waypoints[waypointIndex].waitTime;
-        }
-        zombieMove.AnimateAndMove(forward, 0);
-    }
-
-    //追逐玩家
-    void ChasingPlayer()
-    {
-        if (target == null)
-        {
-            aiState = AIState.Patrol;
-            return;
-        }
-        if (!navMeshAgent.isOnNavMesh)
-            return;
-        if (patrolSettings.waypoints.Length == 0)
-            return;
-        navMeshAgent.SetDestination(target.position);
-
-        LookAtPosition(navMeshAgent.steeringTarget);
-
-        zombieAudio.PlayZombieWalkSound();
-        //走到玩家面前了
-        if (navMeshAgent.remainingDistance <= attackSettings.attackRange-1)
-        {
-            walkingToDest = false;
-            forward = 0;
-            Attacking();
-        }
-        else
-        {
-            walkingToDest = true;
-            forward = LerpSpeed(forward, 1f, 15);
-            animator.SetBool("Attack", false);
-        }
-        zombieMove.JustAnimate(forward, 0);
-    }
-    //攻击
-    void Attacking()
-    {
-        if(attacked ==false && target!= null)
-        {
-            //print("Attack!");
-            int attackType = Random.Range(0, attackSettings.attackType);
-            animator.SetInteger("attackType", attackType);
-            animator.SetBool("Attack", true);         
-            attacked = true;
-            //sound在动画里
-            timer.Add(()=>{attacked =false;},attackSettings.attackCooldown);
-            //延迟后进行判定，最好放在动画里
-            //timer.Add(AttackJudge, attackSettings.attackDelay);
-            //已经放到动画的motion里面去了
-        }
-        else
-        {
-            
-        }
-    }
-    public void AttackJudge()
-    {
-        RaycastHit hit;
-        Vector3 start = transform.position + transform.up;
-        Vector3 dir = (target.transform.position + target.transform.up) - start;
-        if (Physics.Raycast(start, dir, out hit, attackSettings.attackRange, sight.sightLayers))
-        {
-            if (hit.collider.GetComponent<CharacterStats>())
-            {
-                CharacterStats c = hit.collider.GetComponent<CharacterStats>();
-                c.ApplyDamage(attackSettings.damage);
-            }
-        }
-    }
-
-    //发呆
-    void Idel()
-    {
-        walkingToDest = false;
-        forward = LerpSpeed(forward, 0, 5);//停下
-    }
-    //吼叫！没用了
-    void Screaming()
-    {
-        walkingToDest = false;
-        forward = 0;//停下
-    }
-
+    //获取所有玩家对象
     void GetAllCharacter()
-    {
-        //获取所有玩家对象
+    {   
         allCharacters = GameObject.FindObjectsOfType<CharacterStats>();
     }
-
-    //寻找目标
+    //搜寻目标，这是一个时时刻刻都会进行的行为，所以写在基本AI类中
+    //在这里转换状态
     void LookforTarget()
     {
         if (allCharacters.Length > 0)
@@ -272,19 +164,9 @@ public class ZombieAI : Photon.PunBehaviour {
             {
                 target = c.transform;
                 targetLastKnownPosition = Vector3.zero;
-                
-                if(screamed)//只吼一次
-                {
-                    aiState = AIState.Chasing;
-                    animator.SetBool("Scream", false);
-                }
-                else
-                {
-                    aiState = AIState.Screaming;
-                    LookAtPosition(target.position);
-                    screamed = true;
-                    animator.SetBool("Scream", true);
-                } 
+                //切换到追逐状态
+                //追逐状态会转变为 攻击状态，
+                SetZombieState(chasingState);
             }
             else
             {
@@ -311,23 +193,7 @@ public class ZombieAI : Photon.PunBehaviour {
                 minDistance = distToCharacter;
             }
         }
-
         return closestCharacter;
-    }
-
-    float LerpSpeed(float curSpeed,float destSpeed,float time)
-    {
-        return curSpeed = Mathf.Lerp(curSpeed, destSpeed, Time.deltaTime * time);
-    }
-
-    void LookAtPosition(Vector3 pos)
-    {
-        Vector3 dir = pos - transform.position;
-        Quaternion lookRot = Quaternion.LookRotation(dir);
-        lookRot.x = 0;
-        lookRot.z = 0;
-
-        transform.rotation = Quaternion.Lerp(transform.rotation, lookRot, Time.deltaTime * 5);
     }
     //
     void OnAnimatorIK()
@@ -345,16 +211,66 @@ public class ZombieAI : Photon.PunBehaviour {
             }
         }
     }
+    //静态创建所有状态
+    //并初始化当前状态为1
+    void InitializeAIState()
+    {
+        partolState = new PatrolState(this);
+        chasingState = new ChasingState(this);
+        zombieState = partolState;
+    }
 
+    #region public methods
+    //使zombie 朝向某个position
+    public void LookAtPosition(Vector3 pos)
+    {
+        Vector3 dir = pos - transform.position;
+        Quaternion lookRot = Quaternion.LookRotation(dir);
+        lookRot.x = 0;
+        lookRot.z = 0;
 
+        transform.rotation = Quaternion.Lerp(transform.rotation, lookRot, Time.deltaTime * 5);
+    }
 
-    
+    //使用射线投射判定伤害
+    //在Animator motion中调用
+    public void AttackJudge()
+    {
+        RaycastHit hit;
+        Vector3 start = transform.position + transform.up;
+        Vector3 dir = (target.transform.position + target.transform.up) - start;
+        if (Physics.Raycast(start, dir, out hit, attackSettings.attackRange, sight.sightLayers))
+        {
+            if (hit.collider.GetComponent<CharacterStats>())
+            {
+                CharacterStats c = hit.collider.GetComponent<CharacterStats>();
+                c.ApplyDamage(attackSettings.damage);
+            }
+        }
+    }
+    //修改状态
+    public void SetZombieState(ZombieAIState zombieAIState)
+    {
+        zombieState = zombieAIState;
+    }
+
+    public void SetLookAtTransfrom(Transform t)
+    {
+        currentlookTransform = t;
+    }
+    //用于缓慢启动 和慢慢停下
+    public float LerpSpeed(float curSpeed, float destSpeed, float time)
+    {
+        return curSpeed = Mathf.Lerp(curSpeed, destSpeed, Time.deltaTime * time);
+    }
+    #endregion
+
 }
 
 [System.Serializable]
 public class WaypointBase
 {
     public Transform destination;//巡逻点
-    public float waitTime;
-    public Transform lookAtTarget;
+    public float waitTime;       //停留时间
+    public Transform lookAtTarget;//观察方向，可以为空
 }

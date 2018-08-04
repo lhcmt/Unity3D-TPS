@@ -790,6 +790,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4626868582182508}
   - component: {fileID: 114186572616192612}
+  - component: {fileID: 114454046427689888}
   m_Layer: 8
   m_Name: Inventory
   m_TagString: Untagged
@@ -2447,6 +2448,32 @@ MonoBehaviour:
     jumpSpeed: 7
     jumpTime: 0.5
     margin: 0.1
+--- !u!114 &114454046427689888
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1698853176436766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ownerId: 0
+  group: 0
+  OwnerShipWasTransfered: 0
+  prefixBackup: -1
+  synchronization: 0
+  onSerializeTransformOption: 3
+  onSerializeRigidBodyOption: 2
+  ownershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  ObservedComponentsFoldoutOpen: 1
+  viewIdField: 0
+  instantiationId: -1
+  currentMasterID: -1
+  isRuntimeInstantiated: 0
 --- !u!114 &114529774952118608
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2483,6 +2510,7 @@ MonoBehaviour:
     aimingBool: aiming
   currentWeapon: {fileID: 0}
   weaponList: []
+  container: {fileID: 0}
   rifleCarried: 0
 --- !u!114 &114971908645302974
 MonoBehaviour:

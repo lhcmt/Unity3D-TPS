@@ -91,6 +91,7 @@ public class UserInput : Photon.PunBehaviour ,IPunObservable{
 
     void Update()
     {
+        //如果在联网状态下，非自身玩家，只执行下面的
         if (photonView.isMine == false && PhotonNetwork.connected == true)
         {
             WeaponLogic();

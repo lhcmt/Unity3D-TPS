@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ZombieStats : MonoBehaviour {
+public class ZombieStats : Photon.PunBehaviour {
 
     [Range(0, 100)]public float health = 100f;
     public Respawner thisRespwaner;
@@ -38,6 +38,33 @@ public class ZombieStats : MonoBehaviour {
 
     public void ApplyDamage(float number,int direction =0)
     {
+        
+        //原始单机代码
+        if(!PhotonNetwork.connected)
+        {
+            if (isAlive)
+            {
+                health -= number;
+                if (health < 0)
+                {
+                    health = 0;
+                    ZombieDie();
+                }
+                if (health > 100)
+                {
+                    health = 100;
+                }
+            }
+            return;
+        }
+        //联机版本
+        else
+            photonView.RPC("ApplyDamageOnRPC", PhotonTargets.All, number);
+
+    }
+    [PunRPC]
+    void ApplyDamageOnRPC(float number)
+    {
         if (isAlive)
         {
             health -= number;
@@ -51,7 +78,6 @@ public class ZombieStats : MonoBehaviour {
                 health = 100;
             }
         }
-
     }
 
     void ZombieDie()

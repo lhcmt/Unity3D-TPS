@@ -7,7 +7,8 @@ using UnityEngine;
  * 重新生成GameObject
  */
 
-public class Respawner : MonoBehaviour {
+public class Respawner : Photon.PunBehaviour
+{
 
     [System.Serializable]
     public class RespawnerSetting
@@ -32,6 +33,8 @@ public class Respawner : MonoBehaviour {
     int ZombieCurrentAmount =0;
     float lastRespawnTime;
     int Zoffest = 0;
+
+
     //object pool
 
     void Start()
@@ -48,11 +51,17 @@ public class Respawner : MonoBehaviour {
     {
         if(Time.time - lastRespawnTime > respawnerSetting.RespawnRate)
         {
-            RespawnZombie();
-            
+            if (!PhotonNetwork.connected)
+            {
+                RespawnZombie();
+            }
+            else if(PhotonNetwork.isMasterClient)
+            {
+                RespawnZombieOnNetwork();
+            }
         }
     }
-
+    //这个是旧版离线代码
     void RespawnZombie()
     {
         if (ZombieCurrentAmount <= respawnerSetting.MaxZombieAmount)
@@ -62,9 +71,9 @@ public class Respawner : MonoBehaviour {
                 respawnerSetting.respawnPlace.position, 
                 respawnerSetting.respawnPlace.rotation, transform);
             ZombieAI zAI = newZombie.GetComponent<ZombieAI>();
-            
-            
-            for(int i = 0;i < zAI.patrolSettings.waypoints.Length;i++)
+
+
+            for (int i = 0; i < zAI.patrolSettings.waypoints.Length; i++)
             {
                 zAI.patrolSettings.waypoints[i] = respawnerSetting.waypoints[(i + Zoffest) % respawnerSetting.waypoints.Length];
             }
@@ -81,6 +90,60 @@ public class Respawner : MonoBehaviour {
             if(Zoffest >= 6)
                 Zoffest = 0; 
         }
+    }
+
+    void RespawnZombieOnNetwork()
+    {
+        //debug
+        if (respawnerSetting.zombiePrefebs == null )
+        {
+            Debug.LogError("<Color=Red><a>Missing</a></Color> respawnerSetting.zombiePrefebs is null", this);
+            return;
+        }
+
+        if (ZombieCurrentAmount <= respawnerSetting.MaxZombieAmount)
+        {
+            GameObject  newZombie = PhotonNetwork.InstantiateSceneObject(this.respawnerSetting.zombiePrefebs[Zoffest % respawnerSetting.zombiePrefebs.Length].name,
+                respawnerSetting.respawnPlace.position,
+                respawnerSetting.respawnPlace.rotation, 0, null);
+
+            PhotonView zombiephotonView = newZombie.GetComponent<PhotonView>();
+
+            photonView.RPC("SetNewZombie", PhotonTargets.All, zombiephotonView.viewID);
+
+            ZombieCurrentAmount++;
+            lastRespawnTime = Time.time;
+
+            Zoffest++;
+            if (Zoffest >= 6)
+                Zoffest = 0; 
+        }
+
+
+        //call RPC
+    }
+    [PunRPC]
+    void SetNewZombie(int viewID)
+    {
+        //
+        //Debug.Log("RPC SetNewZombie() called");
+
+        PhotonView zombiephotonView = PhotonView.Find(viewID);
+        if(zombiephotonView ==null)
+        {
+            Debug.Log("Can not find PhotonView with ID viewID , in SetNewZombie()");
+            return;
+        }
+        ZombieAI zAI = zombiephotonView.gameObject.GetComponent<ZombieAI>();
+        ZombieStats zState = zombiephotonView.gameObject.GetComponent<ZombieStats>();
+
+        for (int i = 0; i < zAI.patrolSettings.waypoints.Length; i++)
+        {
+            zAI.patrolSettings.waypoints[i] = respawnerSetting.waypoints[(i + Zoffest) % respawnerSetting.waypoints.Length];
+        }
+
+        zState.thisRespwaner = this;
+
     }
 
     public void AmountOne()

@@ -18,7 +18,8 @@ public class AmmoPickUp : PickUpItems {
         }
         else 
         {
-            PhotonNetwork.Destroy(gameObject);
+            if(PhotonNetwork.isMasterClient)
+                PhotonNetwork.Destroy(gameObject);
         }
 
     }

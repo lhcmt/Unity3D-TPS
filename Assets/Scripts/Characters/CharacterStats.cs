@@ -29,6 +29,7 @@ public class CharacterStats : Photon.PunBehaviour,IPunObservable
 
     public void ApplyDamage(float number)
     {
+        //扣血闪烁效果
         if(!PhotonNetwork.connected || photonView.isMine)
             playerUI.damage_react.GetComponent<CanvasGroup>().alpha = 1;
 

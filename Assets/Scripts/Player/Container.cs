@@ -5,7 +5,8 @@ using System.Linq;
 
 
 //包裹
-public class Container : MonoBehaviour {
+public class Container : Photon.PunBehaviour
+{
     //物品列表
     public List<ContainerItem> items;
 
@@ -23,19 +24,40 @@ public class Container : MonoBehaviour {
     /*
      * 向items中添加物品
      */
-    public int Add(ContainerItem item)
+    public void Add(ContainerItem item)
     {
+        //单机情况下
+        if(PhotonNetwork.connected == false)
+        {
+            //背包已有物品，则堆叠
+            var containerItem = GetContainerItem(item.Id);
+            if (containerItem != null)
+                Put(item.Id, item.currentNum);
+            else
+                //否则新建
+                items.Add(new ContainerItem(item.Id, item.Name, item.Maximum, item.currentNum));
+            return;
+        }
+        else
+        {
+            //Debug.Log("call AdditemRPC ");
+            PhotonView photonView = PhotonView.Get(this);
+            if (photonView && photonView.isMine)
+                photonView.RPC("AdditemRPC", PhotonTargets.All, item.Id, item.Name, item.Maximum, item.currentNum);
+        }
+    }
+    [PunRPC]
+    public void AdditemRPC(int Id, string Name, int Maximum, int currentNum)
+    {
+        //Debug.Log("AdditemRPC called");
         //背包已有物品，则堆叠
-        var containerItem = GetContainerItem(item.Id);
-       if (containerItem !=null)
-       {
-           Put(item.Id, item.currentNum);
-           return 2;
-       }
-        //否则新建
-       items.Add(new ContainerItem(item.Id, item.Name, item.Maximum, item.currentNum));
-
-       return item.Id;
+        var containerItem = GetContainerItem(Id);
+        if (containerItem != null)
+            Put(Id,currentNum);
+        else
+            //否则新建
+            items.Add(new ContainerItem(Id, Name, Maximum,currentNum));
+        return;
     }
 
     public void Put(int itemID, int amount)

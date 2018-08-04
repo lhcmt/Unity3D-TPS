@@ -2313,7 +2313,8 @@ MonoBehaviour:
   onSerializeTransformOption: 3
   onSerializeRigidBodyOption: 2
   ownershipTransfer: 0
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: 0}
   ObservedComponentsFoldoutOpen: 1
   viewIdField: 0
   instantiationId: -1
@@ -2412,6 +2413,7 @@ MonoBehaviour:
     aimingBool: aiming
   currentWeapon: {fileID: 0}
   weaponList: []
+  container: {fileID: 0}
   rifleCarried: 0
 --- !u!137 &137073713396348624
 SkinnedMeshRenderer:
